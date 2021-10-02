@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+import { message } from 'ant-design-vue'
 
 type CustomResponse<T = any> = {
   ok: boolean
-  message?: string
 } & AxiosResponse<T>
 
 const instance = axios.create({
@@ -28,9 +28,9 @@ instance.interceptors.response.use(
     }
   },
   (error: AxiosError) => {
+    message.error(error.response?.data.message || '请求失败，轻稍后再试')
     return {
       ok: false,
-      message: error.response?.data.message || '请求失败，轻稍后再试',
       ...error.response,
     }
   },
@@ -44,13 +44,13 @@ const proxy = {
     return instance.post<T, CustomResponse<T>>(url, data, config)
   },
   put<T = any>(url: string, data?: any, config?: AxiosRequestConfig) {
-    return instance.post<T, CustomResponse<T>>(url, data, config)
+    return instance.put<T, CustomResponse<T>>(url, data, config)
   },
   patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig) {
-    return instance.post<T, CustomResponse<T>>(url, data, config)
+    return instance.patch<T, CustomResponse<T>>(url, data, config)
   },
-  delete<T = any>(url: string, data?: any, config?: AxiosRequestConfig) {
-    return instance.post<T, CustomResponse<T>>(url, data, config)
+  delete<T = any>(url: string, config?: AxiosRequestConfig) {
+    return instance.delete<T, CustomResponse<T>>(url, config)
   },
 }
 
