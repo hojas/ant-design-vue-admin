@@ -32,6 +32,7 @@ import { computed, onMounted, ref } from 'vue'
 import { Category, getCategories } from '../services'
 import { columns } from '../controllers'
 import CategoryModal from '../components/category-modal.vue'
+import RemoveModal from '../components/remove-modal.vue'
 
 const category = ref<Category>({ name: '', code: '' })
 
@@ -53,17 +54,13 @@ onMounted(() => {
 
 // 同步 modal 状态
 const updateVisible = async (visible: boolean) => {
-  if (!visible) {
-    getCategoryList()
-  }
-
   modalVisible.value = visible
 }
 
 // 展示 modal
 const beforeShowModal = (c: Category) => {
   if (c && c.id) {
-    category.value = { name: c.name, code: c.code }
+    category.value = { id: c.id, name: c.name, code: c.code }
   } else {
     category.value = { name: '', code: '' }
   }

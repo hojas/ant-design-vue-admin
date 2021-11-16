@@ -12,12 +12,11 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    config.timeout === 30000
     return config
   },
   (error: AxiosError) => {
     return Promise.reject(error)
-  },
+  }
 )
 
 instance.interceptors.response.use(
@@ -28,12 +27,18 @@ instance.interceptors.response.use(
     }
   },
   (error: AxiosError) => {
-    message.error(error.response?.data.message || '请求失败，轻稍后再试')
+    type Data = {
+      message: string
+    }
+
+    const data: Data = error.response?.data as Data
+    message.error(data.message || '请求失败，轻稍后再试')
+
     return {
       ok: false,
       ...error.response,
     }
-  },
+  }
 )
 
 const proxy = {

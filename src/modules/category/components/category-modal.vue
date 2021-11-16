@@ -2,7 +2,7 @@
   <a-modal
     v-model:visible="visible"
     :title="title"
-    @cancel="resetFields()"
+    @cancel="resetFields"
     @ok="handleOk"
   >
     <a-form :label-col="{ span: 4 }" :wrapper-col="{ span: 14 }">
