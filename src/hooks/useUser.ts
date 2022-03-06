@@ -21,9 +21,7 @@ export const useUser = () => {
     results: [],
   })
 
-  onMounted(async () => {
-    updateUsers()
-  })
+  onMounted(() => updateUsers())
 
   const updateUsers = async (page: number = 1) => {
     const { ok, data } = await getUsers({ page })

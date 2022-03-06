@@ -19,6 +19,8 @@ const columns = [
 export const useRole = () => {
   const roles = ref<Role[]>([])
 
+  onMounted(() => updateRoles())
+
   const updateRoles = async () => {
     const { ok, data } = await getRoles()
 
@@ -26,8 +28,6 @@ export const useRole = () => {
       roles.value = data
     }
   }
-
-  onMounted(() => updateRoles())
 
   return {
     columns,
