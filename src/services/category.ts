@@ -6,7 +6,7 @@ export type Category = {
   code: string
 }
 
-export const getCategories = () => axios.get('/admin/category/')
+export const getCategories = () => axios.get<Category[]>('/admin/category/')
 
 export const createCategory = (category: Category) =>
   axios.post<Category>(`/admin/category/`, { category })

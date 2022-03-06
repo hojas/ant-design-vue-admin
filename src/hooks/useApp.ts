@@ -1,12 +1,19 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import {
+  DashboardOutlined,
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons-vue'
 
-export const menu = [
+const menu = [
+  {
+    key: 'dashboard',
+    to: '/',
+    name: 'Dashboard',
+    icon: DashboardOutlined,
+  },
   {
     key: 'user',
     to: '/user',
@@ -39,19 +46,25 @@ export const menu = [
   },
 ]
 
-export const selectedKeys = ref<string[]>(['user'])
-export const collapsed = ref<boolean>(false)
+const selectedKeys = ref<string[]>(['dashboard'])
+const collapsed = ref<boolean>(false)
 
-export const useMenu = () => {
+export const useApp = () => {
   const route = useRoute()
 
   watch(
     () => route.path,
     path => {
       const matchList = /(\w+)/.exec(path) || []
-      const pathKey = matchList.length > 1 ? matchList[1] : 'user'
+      const pathKey = matchList.length > 1 ? matchList[1] : ''
 
       selectedKeys.value = [pathKey]
     },
   )
+
+  return {
+    menu,
+    selectedKeys,
+    collapsed,
+  }
 }

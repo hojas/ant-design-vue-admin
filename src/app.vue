@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+import { ConfigProvider } from 'ant-design-vue'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
+
+import { useApp } from './hooks/useApp'
+
+const { menu, selectedKeys, collapsed } = useApp()
+</script>
+
 <template>
   <config-provider :locale="zhCN">
     <a-layout>
@@ -14,30 +24,9 @@
       </a-layout-sider>
       <a-layout>
         <a-layout-header class="!bg-white !p-0">
-          <menu-unfold-outlined
-            v-if="collapsed"
-            class="
-              text-18px
-              leading-64px
-              px-24px
-              cursor-pointer
-              transition-color
-              duration-300
-              hover:text-blue-700
-            "
-            @click="() => (collapsed = !collapsed)"
-          />
-          <menu-fold-outlined
-            v-else
-            class="
-              text-18px
-              leading-64px
-              px-24px
-              cursor-pointer
-              transition-color
-              duration-300
-              hover:text-blue-700
-            "
+          <component
+            :is="collapsed ? MenuUnfoldOutlined : MenuFoldOutlined"
+            class="text-18px leading-64px px-24px cursor-pointer transition-color duration-300 hover:text-blue-700"
             @click="() => (collapsed = !collapsed)"
           />
         </a-layout-header>
@@ -48,18 +37,3 @@
     </a-layout>
   </config-provider>
 </template>
-
-<script lang="ts" setup>
-import moment from 'moment'
-import 'moment/dist/locale/zh-cn'
-
-import { ConfigProvider } from 'ant-design-vue'
-import zhCN from 'ant-design-vue/es/locale/zh_CN'
-
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue'
-import { menu, selectedKeys, collapsed, useMenu } from './app.service'
-
-moment.locale('zh')
-
-useMenu()
-</script>

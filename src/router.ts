@@ -3,19 +3,19 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    component: () => import('./modules/index.vue'),
+    component: () => import('./pages/home/index.vue'),
   },
   {
     path: '/user',
-    component: () => import('./modules/user/pages/index.vue'),
+    component: () => import('./pages/user/index.vue'),
   },
   {
     path: '/role',
-    component: () => import('./modules/role/pages/index.vue'),
+    component: () => import('./pages/role/index.vue'),
   },
   {
     path: '/category',
-    component: () => import('./modules/category/pages/index.vue'),
+    component: () => import('./pages/category/index.vue'),
   },
 ]
 
