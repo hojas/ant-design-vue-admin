@@ -23,7 +23,7 @@ export const useUser = () => {
 
   onMounted(() => updateUsers())
 
-  const updateUsers = async (page: number = 1) => {
+  const updateUsers = async (page = 1) => {
     const { ok, data } = await getUsers({ page })
 
     if (ok) {

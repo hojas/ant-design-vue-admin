@@ -59,7 +59,7 @@ export const useApp = () => {
       const pathKey = matchList.length > 1 ? matchList[1] : ''
 
       selectedKeys.value = [pathKey]
-    },
+    }
   )
 
   return {

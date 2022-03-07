@@ -18,7 +18,9 @@ declare module 'vue' {
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     AModal: typeof import('ant-design-vue/es')['Modal']
     ATable: typeof import('ant-design-vue/es')['Table']
+    CategoryModal: typeof import('./src/components/category/category-modal.vue')['default']
+    RemoveModal: typeof import('./src/components/category/remove-modal.vue')['default']
   }
 }
 
-export {}
+export { }

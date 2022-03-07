@@ -13,7 +13,7 @@ const { menu, selectedKeys, collapsed } = useApp()
     <a-layout>
       <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
         <div class="py-20px text-white text-20px text-center">朝闻道</div>
-        <a-menu theme="dark" mode="inline" v-model:selectedKeys="selectedKeys">
+        <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item v-for="item in menu" :key="item.key">
             <router-link :to="item.to">
               <component :is="item.icon" />

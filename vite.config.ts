@@ -4,15 +4,10 @@ import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import eslintPlugin from 'vite-plugin-eslint'
+import stylelintPlugin from 'vite-plugin-stylelint'
 
 export default defineConfig({
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-      },
-    },
-  },
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './src'),
@@ -24,5 +19,14 @@ export default defineConfig({
     Components({
       resolvers: [AntDesignVueResolver()],
     }),
+    eslintPlugin(),
+    stylelintPlugin(),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+      },
+    },
+  },
 })

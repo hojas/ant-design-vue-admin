@@ -12,4 +12,3 @@ const { columns, roles } = useRole()
     :pagination="false"
   />
 </template>
-

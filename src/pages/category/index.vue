@@ -4,7 +4,6 @@ import { ref } from 'vue'
 import { Category } from '~/services/category'
 import { useCategory } from '~/hooks/category/useCategory'
 import CategoryModal from '~/components/category/category-modal.vue'
-import removeModal from '~/components/category/remove-modal.vue'
 import RemoveModal from '~/components/category/remove-modal.vue'
 
 const { columns, categories, updateCategories } = useCategory()
