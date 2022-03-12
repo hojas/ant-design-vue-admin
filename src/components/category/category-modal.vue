@@ -57,11 +57,7 @@ const handleOk = async () => {
 </script>
 
 <template>
-  <a-modal
-    v-model:visible="_visible"
-    title="创建分类"
-    @ok="handleOk"
-  >
+  <a-modal v-model:visible="_visible" title="创建分类" @ok="handleOk">
     <a-form :label-col="{ span: 4 }" :wrapper-col="{ span: 14 }">
       <a-form-item label="名称" v-bind="validateInfos.name">
         <a-input v-model:value="categoryForm.name" />

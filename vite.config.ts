@@ -1,4 +1,4 @@
-import path from 'path'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
@@ -10,7 +10,7 @@ import stylelintPlugin from 'vite-plugin-stylelint'
 export default defineConfig({
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, './src'),
+      '~': resolve(__dirname, './src'),
     },
   },
   plugins: [
