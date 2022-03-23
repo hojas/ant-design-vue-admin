@@ -1,18 +1,32 @@
 import axios from '~/utils/axios'
 
-export type Category = {
-  id?: number
+const api = {
+  list: '/admin/category/',
+  detail: (id: number) => `/admin/category/${id}/`,
+}
+
+export interface Category {
+  id: number
   name: string
   code: string
 }
 
-export const getCategories = () => axios.get<Category[]>('/admin/category/')
+export interface CreateCategoryDto {
+  name: string
+  code: string
+}
 
-export const createCategory = (category: Category) =>
-  axios.post<Category>(`/admin/category/`, { category })
+export const getCategoryList = async () => {
+  const { ok, data } = await axios.get<Category[]>(api.list)
+
+  return ok ? data : []
+}
+
+export const createCategory = (category: CreateCategoryDto) =>
+  axios.post<Category>(api.list, { category })
 
 export const updateCategory = (id: number, category: Category) =>
-  axios.put<Category>(`/admin/category/${id}/`, { category })
+  axios.put<Category>(api.detail(id), { category })
 
 export const removeCategory = (id: number) =>
-  axios.delete<Category>(`/admin/category/${id}/`)
+  axios.delete<Category>(api.detail(id))

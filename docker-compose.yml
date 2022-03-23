@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  admin:
+    container_name: nest_blog_admin
+    build: .
+    ports:
+      - 3001:3001
+    environment:
+      VIRTUAL_HOST: localhost
+      VIRTUAL_PORT: 3001
+      VIRTUAL_PATH: /admin
+    network_mode: bridge

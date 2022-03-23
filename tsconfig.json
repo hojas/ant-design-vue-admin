@@ -9,6 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
+    "types": ["@babel/types"],
     "typeRoots": ["./typings", "./node_modules/@types"],
     "baseUrl": ".",
     "paths": {

@@ -1,37 +1,37 @@
 import { reactive } from 'vue'
 import { Form } from 'ant-design-vue'
-import { CreateCategoryDto } from '~/services/category'
+import { CreateArticleDto } from '~/services/article'
 
-export const useCategoryForm = () => {
+export const useArticleForm = () => {
   const { useForm } = Form
 
-  const categoryForm = reactive<CreateCategoryDto>({
-    name: '',
-    code: '',
+  const articleForm = reactive<CreateArticleDto>({
+    title: '',
+    categoryId: 0,
   })
 
   const formRules = reactive({
-    name: [
+    title: [
       {
         required: true,
-        message: '请输入名称',
+        message: '请输入标题',
       },
     ],
-    code: [
+    categoryId: [
       {
         required: true,
-        message: '请输入 code',
+        message: '请选择分类',
       },
     ],
   })
 
   const { resetFields, validate, validateInfos } = useForm(
-    categoryForm,
+    articleForm,
     formRules
   )
 
   return {
-    categoryForm,
+    articleForm,
     resetFields,
     validate,
     validateInfos,

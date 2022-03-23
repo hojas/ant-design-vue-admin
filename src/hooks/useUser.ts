@@ -1,6 +1,6 @@
 import { onMounted, ref } from 'vue'
 import { Pagination } from '~/types/pagination'
-import { getUsers, User } from '~/services/user'
+import { getUserList, User } from '~/services/user'
 
 const columns = [
   {
@@ -11,29 +11,37 @@ const columns = [
     title: '邮箱',
     dataIndex: 'username',
   },
+  {
+    title: '昵称',
+    dataIndex: 'nickname',
+  },
+  {
+    title: '注册时间',
+    dataIndex: 'createdAt',
+  },
+  {
+    title: '更新时间',
+    dataIndex: 'updatedAt',
+  },
 ]
 
 export const useUser = () => {
-  const users = ref<Pagination<User>>({
+  const userList = ref<Pagination<User>>({
     page: 1,
     pageSize: 16,
     total: 0,
     results: [],
   })
 
-  onMounted(() => updateUsers())
+  onMounted(() => updateUserList())
 
-  const updateUsers = async (page = 1) => {
-    const { ok, data } = await getUsers({ page })
-
-    if (ok) {
-      users.value = data
-    }
+  const updateUserList = async (page = 1) => {
+    userList.value = await getUserList({ page })
   }
 
   return {
     columns,
-    users,
-    updateUsers,
+    userList,
+    updateUserList,
   }
 }

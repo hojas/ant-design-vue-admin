@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useUser } from '~/hooks/useUser'
 
-const { columns, users } = useUser()
+const { columns, userList } = useUser()
 </script>
 
 <template>
-  <a-table :columns="columns" :data-source="users.results" row-key="id" />
+  <a-table :columns="columns" :data-source="userList.results" row-key="id" />
 </template>

@@ -1,5 +1,5 @@
 import { onMounted, ref } from 'vue'
-import { getRoles, Role } from '~/services/role'
+import { getRoleList, Role } from '~/services/role'
 
 const columns = [
   {
@@ -14,23 +14,27 @@ const columns = [
     title: 'CODE',
     dataIndex: 'code',
   },
+  {
+    title: '创建时间',
+    dataIndex: 'createdAt',
+  },
+  {
+    title: '更新时间',
+    dataIndex: 'updatedAt',
+  },
 ]
 
 export const useRole = () => {
-  const roles = ref<Role[]>([])
+  const roleList = ref<Role[]>([])
 
   onMounted(() => updateRoles())
 
   const updateRoles = async () => {
-    const { ok, data } = await getRoles()
-
-    if (ok) {
-      roles.value = data
-    }
+    roleList.value = await getRoleList()
   }
 
   return {
     columns,
-    roles,
+    roleList,
   }
 }

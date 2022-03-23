@@ -19,10 +19,6 @@ const onFinish = async (values: LoginDto) => {
     return push('/')
   }
 }
-
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo)
-}
 </script>
 
 <template>
@@ -33,7 +29,6 @@ const onFinishFailed = (errorInfo: any) => {
     :wrapper-col="{ span: 6 }"
     autocomplete="off"
     @finish="onFinish"
-    @finish-failed="onFinishFailed"
   >
     <a-form-item
       label="邮箱"

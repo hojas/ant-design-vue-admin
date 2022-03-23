@@ -4,3 +4,10 @@ export interface Pagination<T> {
   total: number
   results: T[]
 }
+
+export interface PaginationModel<T> {
+  page: number
+  page_size: number
+  total: number
+  results: T[]
+}

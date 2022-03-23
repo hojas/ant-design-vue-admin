@@ -1,31 +1,31 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 
-import { Category } from '~/services/category'
-import { useCategory } from '~/hooks/category/useCategory'
-import CategoryModal from '~/components/category/category-modal.vue'
-import RemoveModal from '~/components/category/remove-category-modal.vue'
+import { Article } from '~/services/article'
+import { useArticle } from '~/hooks/article/useArticle'
+import ArticleModal from '~/components/article/article-modal.vue'
+import RemoveModal from '~/components/article/remove-article-modal.vue'
 
-const { columns, categoryList, updateCategoryList } = useCategory()
+const { columns, articleList, updateArticleList } = useArticle()
 
 const visible = ref(false)
 const removeModalVisible = ref(false)
-const category = ref<Category>()
+const article = ref<Article>()
 
-onMounted(() => updateCategoryList())
+onMounted(() => updateArticleList())
 
 const handleCreate = () => {
-  category.value = undefined
+  article.value = undefined
   visible.value = true
 }
 
-const handleUpdate = (record: Category) => {
-  category.value = record
+const handleUpdate = (record: Article) => {
+  article.value = record
   visible.value = true
 }
 
-const handleRemove = (record: Category) => {
-  category.value = record
+const handleRemove = (record: Article) => {
+  article.value = record
   removeModalVisible.value = true
 }
 </script>
@@ -35,7 +35,7 @@ const handleRemove = (record: Category) => {
   <a-divider />
   <a-table
     :columns="columns"
-    :data-source="categoryList"
+    :data-source="articleList.results"
     :pagination="false"
     row-key="id"
     bordered
@@ -50,14 +50,14 @@ const handleRemove = (record: Category) => {
       </template>
     </template>
   </a-table>
-  <category-modal
+  <article-modal
     v-model:visible="visible"
-    :category="category"
-    @ok="updateCategoryList"
+    :article="article"
+    @ok="updateArticleList"
   />
   <remove-modal
     v-model:visible="removeModalVisible"
-    :category="category"
-    @ok="updateCategoryList"
+    :article="article"
+    @ok="updateArticleList"
   />
 </template>

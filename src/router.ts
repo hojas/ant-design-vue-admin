@@ -21,6 +21,10 @@ const routes = [
     path: '/category',
     component: () => import('./pages/category/index.vue'),
   },
+  {
+    path: '/article',
+    component: () => import('./pages/article/index.vue'),
+  },
 ]
 
 export const router = createRouter({

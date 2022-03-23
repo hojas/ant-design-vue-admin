@@ -44,7 +44,10 @@ const handleOk = async () => {
     await validate()
 
     if (props.category && props.category.id) {
-      await updateCategory(props.category.id, categoryForm)
+      await updateCategory(props.category.id, {
+        ...props.category,
+        ...categoryForm,
+      })
     } else {
       await createCategory(categoryForm)
     }

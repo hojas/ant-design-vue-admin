@@ -5,8 +5,6 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
-    AButtonGroup: typeof import('ant-design-vue/es')['ButtonGroup']
-    ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     ADivider: typeof import('ant-design-vue/es')['Divider']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
@@ -19,8 +17,14 @@ declare module 'vue' {
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AMenuItem: typeof import('ant-design-vue/es')['MenuItem']
     AModal: typeof import('ant-design-vue/es')['Modal']
+    ArticleModal: typeof import('./src/components/article/article-modal.vue')['default']
+    ASelect: typeof import('ant-design-vue/es')['Select']
+    ASelectOption: typeof import('ant-design-vue/es')['SelectOption']
     ATable: typeof import('ant-design-vue/es')['Table']
     CategoryModal: typeof import('./src/components/category/category-modal.vue')['default']
+    CategorySelect: typeof import('./src/components/article/category-select.vue')['default']
+    RemoveArticleModal: typeof import('./src/components/article/remove-article-modal.vue')['default']
+    RemoveCategoryModal: typeof import('./src/components/category/remove-category-modal.vue')['default']
     RemoveModal: typeof import('./src/components/category/remove-modal.vue')['default']
   }
 }

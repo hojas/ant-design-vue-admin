@@ -1,7 +1,7 @@
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import {
   Category,
-  getCategories,
+  getCategoryList,
   createCategory,
   updateCategory,
   removeCategory,
@@ -21,28 +21,34 @@ export const columns = [
     dataIndex: 'code',
   },
   {
+    title: '排序码',
+    dataIndex: 'orderIndex',
+  },
+  {
+    title: '创建时间',
+    dataIndex: 'createdAt',
+  },
+  {
+    title: '更新时间',
+    dataIndex: 'updatedAt',
+  },
+  {
     title: '操作',
-    slots: { customRender: 'action' },
+    dataIndex: 'action',
   },
 ]
 
 export const useCategory = () => {
-  const categories = ref<Category[]>([])
+  const categoryList = ref<Category[]>([])
 
-  onMounted(() => updateCategories())
-
-  const updateCategories = async () => {
-    const { ok, data } = await getCategories()
-
-    if (ok) {
-      categories.value = data
-    }
+  const updateCategoryList = async () => {
+    categoryList.value = await getCategoryList()
   }
 
   return {
     columns,
-    categories,
-    updateCategories,
+    categoryList,
+    updateCategoryList,
     createCategory,
     updateCategory,
     removeCategory,
