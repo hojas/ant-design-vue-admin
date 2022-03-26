@@ -30,6 +30,7 @@ watch(
     if (category) {
       categoryForm.name = category.name
       categoryForm.code = category.code
+      categoryForm.orderIndex = category.orderIndex
     } else {
       resetFields()
     }
@@ -44,8 +45,16 @@ const handleOk = async () => {
     await validate()
 
     if (props.category && props.category.id) {
+      const {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        createdAt: _createdAt,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        updatedAt: _updatedAt,
+        ...restCategory
+      } = props.category
+
       await updateCategory(props.category.id, {
-        ...props.category,
+        ...restCategory,
         ...categoryForm,
       })
     } else {
@@ -67,6 +76,12 @@ const handleOk = async () => {
       </a-form-item>
       <a-form-item label="code" v-bind="validateInfos.code">
         <a-input v-model:value="categoryForm.code" />
+      </a-form-item>
+      <a-form-item label="排序码" v-bind="validateInfos.orderIndex">
+        <a-input-number
+          v-model:value="categoryForm.orderIndex"
+          class="!w-1/1"
+        />
       </a-form-item>
     </a-form>
   </a-modal>

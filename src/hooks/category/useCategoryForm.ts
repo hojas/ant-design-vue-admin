@@ -8,6 +8,7 @@ export const useCategoryForm = () => {
   const categoryForm = reactive<CreateCategoryDto>({
     name: '',
     code: '',
+    orderIndex: 0,
   })
 
   const formRules = reactive({
@@ -21,6 +22,12 @@ export const useCategoryForm = () => {
       {
         required: true,
         message: '请输入 code',
+      },
+    ],
+    orderIndex: [
+      {
+        required: true,
+        message: '请输入排序码',
       },
     ],
   })

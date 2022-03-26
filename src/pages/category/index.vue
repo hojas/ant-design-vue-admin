@@ -1,5 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
+import {
+  PlusOutlined,
+  EditOutlined,
+  DeleteOutlined,
+} from '@ant-design/icons-vue'
 
 import { Category } from '~/services/category'
 import { useCategory } from '~/hooks/category/useCategory'
@@ -31,7 +36,10 @@ const handleRemove = (record: Category) => {
 </script>
 
 <template>
-  <a-button type="primary" @click="handleCreate">添加</a-button>
+  <a-button type="primary" @click="handleCreate">
+    <template #icon><plus-outlined /></template>
+    添加
+  </a-button>
   <a-divider />
   <a-table
     :columns="columns"
@@ -42,9 +50,13 @@ const handleRemove = (record: Category) => {
   >
     <template #bodyCell="{ column, record }">
       <template v-if="column.dataIndex === 'action'">
-        <a-button type="primary" @click="handleUpdate(record)">编辑</a-button>
+        <a-button type="primary" @click="handleUpdate(record)">
+          <template #icon><edit-outlined /></template>
+          编辑
+        </a-button>
         <a-divider type="vertical" />
         <a-button type="primary" danger @click="handleRemove(record)">
+          <template #icon><delete-outlined /></template>
           删除
         </a-button>
       </template>

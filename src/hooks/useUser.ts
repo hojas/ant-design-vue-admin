@@ -12,6 +12,10 @@ const columns = [
     dataIndex: 'username',
   },
   {
+    title: '手机号',
+    dataIndex: 'phone',
+  },
+  {
     title: '昵称',
     dataIndex: 'nickname',
   },
