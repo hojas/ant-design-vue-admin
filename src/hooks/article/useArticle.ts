@@ -19,6 +19,14 @@ export const columns = [
     dataIndex: 'title',
   },
   {
+    title: '分类',
+    dataIndex: 'category',
+  },
+  {
+    title: '作者',
+    dataIndex: 'author',
+  },
+  {
     title: '创建时间',
     dataIndex: 'createdAt',
   },
