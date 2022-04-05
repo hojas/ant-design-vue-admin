@@ -23,6 +23,7 @@ export interface Article {
 export interface CreateArticleDto {
   title: string
   categoryId: number
+  content: string
 }
 
 export const getArticleList = async () => {
@@ -47,10 +48,11 @@ export const createArticle = (article: CreateArticleDto) =>
     article: {
       title: article.title,
       categoryId: article.categoryId,
+      content: '',
     },
   })
 
-export const updateArticle = (id: number, article: Article) =>
+export const updateArticle = (id: number, article: CreateArticleDto) =>
   axios.put<Article>(api.detail(id), { article })
 
 export const removeArticle = (id: number) =>

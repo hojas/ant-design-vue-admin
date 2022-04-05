@@ -52,11 +52,15 @@ export const useArticle = () => {
     articleList.value = await getArticleList()
   }
 
+  const getArticle = (id: number) => {
+    return getArticleById(id)
+  }
+
   return {
     columns,
     articleList,
     updateArticleList,
-    getArticleById,
+    getArticle,
     createArticle,
     updateArticle,
     removeArticle,

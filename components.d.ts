@@ -24,6 +24,7 @@ declare module 'vue' {
     ATable: typeof import('ant-design-vue/es')['Table']
     CategoryModal: typeof import('./src/components/category/category-modal.vue')['default']
     CategorySelect: typeof import('./src/components/article/category-select.vue')['default']
+    MarkdownEditor: typeof import('./src/components/ui/markdown-editor.vue')['default']
     RemoveArticleModal: typeof import('./src/components/article/remove-article-modal.vue')['default']
     RemoveCategoryModal: typeof import('./src/components/category/remove-category-modal.vue')['default']
     RemoveModal: typeof import('./src/components/category/remove-modal.vue')['default']

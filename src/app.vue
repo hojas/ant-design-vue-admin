@@ -22,7 +22,7 @@ const { menu, selectedKeys, collapsed } = useApp()
           </a-menu-item>
         </a-menu>
       </a-layout-sider>
-      <a-layout>
+      <a-layout class="!min-h-100vh">
         <a-layout-header class="!bg-white !p-0">
           <component
             :is="collapsed ? MenuUnfoldOutlined : MenuFoldOutlined"
@@ -30,8 +30,10 @@ const { menu, selectedKeys, collapsed } = useApp()
             @click="() => (collapsed = !collapsed)"
           />
         </a-layout-header>
-        <a-layout-content class="my-24px mx-16px p-24px bg-white !min-h-300px">
-          <router-view></router-view>
+        <a-layout-content
+          class="my-24px mx-16px p-24px bg-white !min-h-[calc(100%_-_64px)]"
+        >
+          <router-view />
         </a-layout-content>
       </a-layout>
     </a-layout>
