@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   admin:
-    container_name: nest_blog_admin
+    container_name: vue-admin
     build: .
     ports:
-      - 3001:3001
+      - 127.0.0.1:3001:3001
     environment:
-      VIRTUAL_HOST: localhost
+      VIRTUAL_HOST: admin.zwd.xyz
       VIRTUAL_PORT: 3001
-      VIRTUAL_PATH: /admin
+      VIRTUAL_PATH: /
     network_mode: bridge

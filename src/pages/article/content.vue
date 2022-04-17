@@ -37,7 +37,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col h-1/1">
-    <a-button class="w-100px" type="primary" href="/article">返回</a-button>
+    <a-button class="w-[100px]" type="primary" href="/article">返回</a-button>
     <a-divider />
     <markdown-editor v-model:value="content" />
   </div>

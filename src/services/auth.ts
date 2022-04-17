@@ -1,5 +1,4 @@
 import axios from '~/utils/axios'
-import { User } from '~/services/user'
 
 const api = {
   login: '/auth/login/',

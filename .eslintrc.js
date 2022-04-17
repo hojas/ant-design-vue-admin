@@ -25,5 +25,7 @@ module.exports = {
       },
     },
   ],
-  rules: {},
+  rules: {
+    'v-html': 'off',
+  },
 }

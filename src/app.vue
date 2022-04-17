@@ -12,7 +12,7 @@ const { menu, selectedKeys, collapsed } = useApp()
   <config-provider :locale="zhCN">
     <a-layout>
       <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
-        <div class="py-20px text-white text-20px text-center">朝闻道</div>
+        <div class="py-[20px] text-white text-[20px] text-center">朝闻道</div>
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item v-for="item in menu" :key="item.key">
             <router-link :to="item.to">
@@ -22,16 +22,16 @@ const { menu, selectedKeys, collapsed } = useApp()
           </a-menu-item>
         </a-menu>
       </a-layout-sider>
-      <a-layout class="!min-h-100vh">
+      <a-layout class="!min-h-[100vh]">
         <a-layout-header class="!bg-white !p-0">
           <component
             :is="collapsed ? MenuUnfoldOutlined : MenuFoldOutlined"
-            class="text-18px leading-64px px-24px cursor-pointer transition-color duration-300 hover:text-blue-700"
+            class="text-18px px-[24px] cursor-pointer transition-color duration-300 hover:text-blue-700"
             @click="() => (collapsed = !collapsed)"
           />
         </a-layout-header>
         <a-layout-content
-          class="my-24px mx-16px p-24px bg-white !min-h-[calc(100%_-_64px)]"
+          class="my-[24px] mx-[16px] p-[24px] bg-white !min-h-[calc(100%_-_64px)]"
         >
           <router-view />
         </a-layout-content>

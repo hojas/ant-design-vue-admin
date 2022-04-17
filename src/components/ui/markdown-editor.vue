@@ -51,8 +51,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex h-1/1">
+  <div class="flex h-screen">
     <div ref="editorRef" class="w-1/2" />
-    <div class="w-1/2" v-html="markedContent" />
+    <div
+      class="w-1/2 p-[20px] border-solid border-[#eee] overflow-y-auto"
+      v-html="markedContent"
+    />
   </div>
 </template>

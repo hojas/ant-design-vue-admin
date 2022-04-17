@@ -3,8 +3,7 @@ FROM node:16.14.2-alpine AS builder
 WORKDIR /root/app
 COPY . .
 RUN corepack enable
-RUN pnpm i
-RUN pnpm run build
+RUN pnpm i && pnpm run build
 
 
 FROM nginx:1.20.2-alpine
