@@ -28,7 +28,6 @@ declare module '@vue/runtime-core' {
     MarkdownEditor: typeof import('./src/components/ui/markdown-editor.vue')['default']
     RemoveArticleModal: typeof import('./src/components/article/remove-article-modal.vue')['default']
     RemoveCategoryModal: typeof import('./src/components/category/remove-category-modal.vue')['default']
-    RemoveModal: typeof import('./src/components/category/remove-modal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

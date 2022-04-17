@@ -8,6 +8,7 @@ export const useArticleForm = () => {
   const articleForm = reactive<CreateArticleDto>({
     title: '',
     categoryId: 0,
+    content: '',
   })
 
   const formRules = reactive({
