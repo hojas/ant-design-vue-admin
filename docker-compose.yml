@@ -7,8 +7,8 @@ services:
     ports:
       - 127.0.0.1:3001:80
     environment:
-      LETSENCRYPT_HOST: admin.zwd.xyz
-      VIRTUAL_HOST: admin.zwd.xyz
+      LETSENCRYPT_HOST: www.zwd.xyz
+      VIRTUAL_HOST: www.zwd.xyz
       VIRTUAL_PORT: 3001
-      VIRTUAL_PATH: /
+      VIRTUAL_PATH: /admin
     network_mode: bridge
