@@ -1,17 +1,25 @@
 FROM node:16.14.2-alpine AS builder
 
-WORKDIR /root/app
-COPY . .
+WORKDIR /opt/app
+COPY package.json .
+COPY pnpm-lock.yaml .
 RUN corepack enable
-RUN pnpm i && pnpm run build
+RUN pnpm i
 
 
-FROM nginx:1.20.2-alpine
+FROM node:16.14.2-alpine
 
-WORKDIR /usr/share/nginx/html/admin
-COPY --from=builder /root/app/dist .
-RUN mv index.html ..
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d
+WORKDIR /opt/app
+COPY . .
+COPY --from=builder /opt/app/node_modules ./node_modules
+RUN corepack enable
+RUN pnpm run build
 
-EXPOSE 80
+WORKDIR /opt/app/dist
+RUN mkdir ./admin
+RUN mv assets ./admin && mv favicon.ico ./admin && mv index.html ./admin
+RUN cp ./admin/index.html ./404.html
+RUN npm i -g http-server
+
+EXPOSE 3001
+CMD http-server . -p 3001 -i
