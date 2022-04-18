@@ -13,4 +13,4 @@ COPY --from=builder /root/app/dist .
 RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d
 
-EXPOSE 3001
+EXPOSE 80
