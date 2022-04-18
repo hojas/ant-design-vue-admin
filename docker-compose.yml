@@ -5,7 +5,7 @@ services:
     container_name: vue-admin
     build: .
     ports:
-      - 127.0.0.1:3001:3001
+      - 127.0.0.1:3001:80
     environment:
       LETSENCRYPT_HOST: admin.zwd.xyz
       VIRTUAL_HOST: admin.zwd.xyz
