@@ -104,7 +104,7 @@ instance.interceptors.response.use(
     } = error
 
     if (error.config?.showError) {
-      const data: Data = response.data
+      const data: Data = response.data as Data
       await message.error(data.message)
     }
 

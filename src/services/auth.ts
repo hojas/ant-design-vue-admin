@@ -2,6 +2,7 @@ import axios from '~/utils/axios'
 
 const api = {
   login: '/auth/login/',
+  user: '/auth/user/',
 }
 
 export interface LoginDto {
@@ -10,3 +11,4 @@ export interface LoginDto {
 }
 
 export const login = (user: LoginDto) => axios.post(api.login, user)
+export const getUser = () => axios.get(api.user)

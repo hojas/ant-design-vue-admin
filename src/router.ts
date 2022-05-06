@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { getUser } from '~/services/auth'
 
 const routes = [
   {
@@ -31,7 +32,19 @@ const routes = [
   },
 ]
 
-export const router = createRouter({
+const router = createRouter({
   history: createWebHistory('/admin'),
   routes,
 })
+
+router.beforeEach(async (to, _from, next) => {
+  const { ok } = await getUser()
+
+  if (!to.path.includes('/login') && !ok) {
+    next({ path: '/login' })
+  }
+
+  next()
+})
+
+export { router }

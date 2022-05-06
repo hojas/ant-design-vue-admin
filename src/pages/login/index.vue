@@ -2,10 +2,10 @@
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { LoginDto } from '~/services/auth'
-import { useLogin } from '~/hooks/useLogin'
+import { useAuth } from '~/hooks/useAuth'
 
 const { push } = useRouter()
-const { login } = useLogin()
+const { login } = useAuth()
 
 const formState = reactive<LoginDto>({
   username: '',

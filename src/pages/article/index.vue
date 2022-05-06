@@ -56,7 +56,7 @@ const handleRemove = (record: Article) => {
         <div>{{ record.author.username }}</div>
       </template>
       <template v-if="column.dataIndex === 'action'">
-        <a-button type="primary" :href="`/article/${record.id}/content`">
+        <a-button type="primary" :href="`/admin/article/${record.id}/content`">
           <template #icon><edit-outlined /></template>
           详情
         </a-button>

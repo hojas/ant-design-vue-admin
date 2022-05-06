@@ -11,7 +11,12 @@ const { menu, selectedKeys, collapsed } = useApp()
 <template>
   <config-provider :locale="zhCN">
     <a-layout>
-      <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
+      <a-layout-sider
+        v-if="!$route.path.includes('/login')"
+        v-model:collapsed="collapsed"
+        :trigger="null"
+        collapsible
+      >
         <div class="py-[20px] text-white text-[20px] text-center">朝闻道</div>
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item v-for="item in menu" :key="item.key">
