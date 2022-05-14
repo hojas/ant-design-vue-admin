@@ -12,4 +12,9 @@ services:
       VIRTUAL_PORT: 3001
       VIRTUAL_PATH: /admin
     networks:
-      - default
+      - blog
+
+networks:
+  blog:
+    external:
+      name: blog
