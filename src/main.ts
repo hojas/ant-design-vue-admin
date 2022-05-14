@@ -10,6 +10,7 @@ import antd from 'ant-design-vue'
 
 import { router } from './router'
 import App from './app.vue'
+import store from './store'
 
 const app = createApp(App)
 
@@ -19,4 +20,5 @@ app
   .use(Calendar)
   .use(antd)
   .use(router)
+  .use(store)
   .mount('#app')

@@ -5,6 +5,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
+  CommentOutlined,
 } from '@ant-design/icons-vue'
 
 const menu = [
@@ -43,6 +44,12 @@ const menu = [
     to: '/tag',
     name: '标签管理',
     icon: UploadOutlined,
+  },
+  {
+    key: 'comment',
+    to: '/comment',
+    name: '评论管理',
+    icon: CommentOutlined,
   },
 ]
 

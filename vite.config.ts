@@ -21,7 +21,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://www.zwd.xyz',
+        // target: 'https://www.zwd.xyz',
+        target: 'http://localhost:8080',
         changeOrigin: true,
       },
     },

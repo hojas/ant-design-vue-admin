@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   app:
@@ -11,4 +11,3 @@ services:
       VIRTUAL_HOST: www.zwd.xyz
       VIRTUAL_PORT: 3001
       VIRTUAL_PATH: /admin
-    network_mode: bridge

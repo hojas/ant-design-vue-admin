@@ -5,9 +5,9 @@ export interface Pagination<T> {
   results: T[]
 }
 
-export interface PaginationModel<T> {
-  page: number
-  page_size: number
-  total: number
-  results: T[]
+export const defaultPagination: Pagination<any> = {
+  page: 1,
+  pageSize: 16,
+  total: 0,
+  results: [],
 }

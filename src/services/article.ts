@@ -1,5 +1,5 @@
 import axios from '~/utils/axios'
-import { Pagination } from '~/types/pagination'
+import { Pagination, defaultPagination } from '~/types/pagination'
 
 const api = {
   list: '/admin/article/',
@@ -29,16 +29,7 @@ export interface CreateArticleDto {
 export const getArticleList = async () => {
   const { ok, data } = await axios.get<Pagination<Article>>(api.list)
 
-  if (ok) {
-    return data
-  }
-
-  return {
-    page: 1,
-    pageSize: 16,
-    total: 0,
-    results: [],
-  }
+  return ok ? data : defaultPagination
 }
 
 export const getArticleById = (id: number) => axios.get<Article>(api.detail(id))

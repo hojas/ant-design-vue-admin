@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { getUser } from '~/services/auth'
+import { useAuth } from '~/store/auth'
 
 const routes = [
   {
@@ -30,6 +30,10 @@ const routes = [
     path: '/article/:id/content',
     component: () => import('./pages/article/content.vue'),
   },
+  {
+    path: '/comment',
+    component: () => import('./pages/comment/index.vue'),
+  },
 ]
 
 const router = createRouter({
@@ -38,13 +42,31 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, _from, next) => {
-  const { ok } = await getUser()
+  const { getUser, user, fetched } = useAuth()
 
-  if (!to.path.includes('/login') && !ok) {
-    next({ path: '/login' })
+  if (!fetched) {
+    await getUser()
   }
 
-  next()
+  if (to.path.includes('/login')) {
+    // 登录页面
+    if (user) {
+      // 已登录
+      next({ path: '/' })
+    } else {
+      // 未登录
+      next()
+    }
+  } else {
+    // 非登录页面
+    if (user) {
+      // 已登录
+      next()
+    } else {
+      // 未登录
+      next({ path: '/login' })
+    }
+  }
 })
 
 export { router }
