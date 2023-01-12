@@ -2,19 +2,7 @@ version: '3.9'
 
 services:
   app:
-    container_name: vue-admin
+    container_name: ant-design-vue-admin
     build: .
     ports:
-      - 127.0.0.1:3001:3001
-    environment:
-      LETSENCRYPT_HOST: www.zwd.xyz
-      VIRTUAL_HOST: www.zwd.xyz
-      VIRTUAL_PORT: 3001
-      VIRTUAL_PATH: /admin
-    networks:
-      - blog
-
-networks:
-  blog:
-    external:
-      name: blog
+      - 127.0.0.1:3000:3000

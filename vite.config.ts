@@ -6,7 +6,7 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
-  base: '/admin/',
+  base: '/',
   resolve: {
     alias: {
       '~': resolve(__dirname, './src'),
@@ -21,7 +21,6 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        // target: 'https://www.zwd.xyz',
         target: 'http://localhost:8080',
         changeOrigin: true,
       },
